@@ -10,8 +10,8 @@ class Bill(order: List[MenuItem], optLoyaltyCard: Option[LoyaltyCard] = None) {
   private val cost: BigDecimal = order.map(_.price).sum
 
   private val preServiceChargeCost: BigDecimal = optLoyaltyCard match {
-    case Some(loyalty) => cost * loyalty.percentageDecrease
-    case None => cost
+    case Some(loyalty) if !order.exists(_.itemType == Premium) => cost * loyalty.percentageDecrease
+    case _ => cost
   }
 
   private val serviceCharge: BigDecimal = getServiceCharge match {

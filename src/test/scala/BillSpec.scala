@@ -167,6 +167,18 @@ class BillSpec extends WordSpecLike with MustMatchers {
 
         result mustBe testPrice
       }
+
+      "a customer has ordered a premium item" in {
+        val loyaltyCard = LoyaltyCard(stars = 3)
+        val testOrder = List(Lobster, SteakSandwich, Cola)
+        val testPrice = "£37.50"
+
+        object TestBill extends Bill(testOrder, Some(loyaltyCard))
+
+        val result = TestBill.totalCost
+
+        result mustBe testPrice
+      }
     }
   }
 
