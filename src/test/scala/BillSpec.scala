@@ -9,9 +9,7 @@ class BillSpec extends WordSpecLike with MustMatchers {
         val testOrder = List(Cola)
         val testPrice = "£0.50"
 
-        object TestBill extends Bill(testOrder)
-
-        val result = TestBill.totalCost
+        val result = Bill.getTotalCost(testOrder)
 
         result mustBe testPrice
       }
@@ -20,9 +18,7 @@ class BillSpec extends WordSpecLike with MustMatchers {
         val testOrder = List(Coffee)
         val testPrice = "£1.00"
 
-        object TestBill extends Bill(testOrder)
-
-        val result = TestBill.totalCost
+        val result = Bill.getTotalCost(testOrder)
 
         result mustBe testPrice
       }
@@ -31,9 +27,7 @@ class BillSpec extends WordSpecLike with MustMatchers {
         val testOrder = List(Coffee, Cola)
         val testPrice = "£1.50"
 
-        object TestBill extends Bill(testOrder)
-
-        val result = TestBill.totalCost
+        val result = Bill.getTotalCost(testOrder)
 
         result mustBe testPrice
       }
@@ -44,9 +38,7 @@ class BillSpec extends WordSpecLike with MustMatchers {
         val testOrder = List(Cola, CheeseSandwich)
         val testPrice = "£2.75"
 
-        object TestBill extends Bill(testOrder)
-
-        val result = TestBill.totalCost
+        val result = Bill.getTotalCost(testOrder)
 
         result mustBe testPrice
       }
@@ -57,9 +49,7 @@ class BillSpec extends WordSpecLike with MustMatchers {
         val testOrder = List(Cola, SteakSandwich)
         val testPrice = "£6.00"
 
-        object TestBill extends Bill(testOrder)
-
-        val result = TestBill.totalCost
+        val result = Bill.getTotalCost(testOrder)
 
         result mustBe testPrice
       }
@@ -70,9 +60,7 @@ class BillSpec extends WordSpecLike with MustMatchers {
         val testOrder = (1 to 25).map(_ => SteakSandwich).toList
         val testPrice = "£132.50"
 
-        object TestBill extends Bill(testOrder)
-
-        val result = TestBill.totalCost
+        val result = Bill.getTotalCost(testOrder)
 
         result mustBe testPrice
       }
@@ -83,9 +71,7 @@ class BillSpec extends WordSpecLike with MustMatchers {
         val testOrder = List(Lobster)
         val testPrice = "£31.25"
 
-        object TestBill extends Bill(testOrder)
-
-        val result = TestBill.totalCost
+        val result = Bill.getTotalCost(testOrder)
 
         result mustBe testPrice
       }
@@ -96,9 +82,7 @@ class BillSpec extends WordSpecLike with MustMatchers {
         val testOrder = (1 to 8).map(_ => Lobster).toList
         val testPrice = "£240.00"
 
-        object TestBill extends Bill(testOrder)
-
-        val result = TestBill.totalCost
+        val result = Bill.getTotalCost(testOrder)
 
         result mustBe testPrice
       }
@@ -109,9 +93,7 @@ class BillSpec extends WordSpecLike with MustMatchers {
         val testOrder = List()
         val testPrice = "£0.00"
 
-        object TestBill extends Bill(testOrder)
-
-        val result = TestBill.totalCost
+        val result = Bill.getTotalCost(testOrder)
 
         result mustBe testPrice
       }
@@ -123,9 +105,7 @@ class BillSpec extends WordSpecLike with MustMatchers {
         val testOrder = List(SteakSandwich, SteakSandwich, Coffee)
         val testPrice = "£9.60"
 
-        object TestBill extends Bill(testOrder, Some(loyaltyCard))
-
-        val result = TestBill.totalCost
+        val result = Bill.getTotalCost(testOrder, Some(loyaltyCard))
 
         result mustBe testPrice
       }
@@ -135,9 +115,7 @@ class BillSpec extends WordSpecLike with MustMatchers {
         val testOrder = List(SteakSandwich, SteakSandwich, Coffee)
         val testPrice = "£11.10"
 
-        object TestBill extends Bill(testOrder, Some(loyaltyCard))
-
-        val result = TestBill.totalCost
+        val result = Bill.getTotalCost(testOrder, Some(loyaltyCard))
 
         result mustBe testPrice
       }
@@ -149,9 +127,7 @@ class BillSpec extends WordSpecLike with MustMatchers {
         val testOrder = List(SteakSandwich, SteakSandwich, Coffee)
         val testPrice = "£12.00"
 
-        object TestBill extends Bill(testOrder, Some(loyaltyCard))
-
-        val result = TestBill.totalCost
+        val result = Bill.getTotalCost(testOrder, Some(loyaltyCard))
 
         result mustBe testPrice
       }
@@ -161,9 +137,7 @@ class BillSpec extends WordSpecLike with MustMatchers {
         val testOrder = List(SteakSandwich, SteakSandwich, Coffee)
         val testPrice = "£12.00"
 
-        object TestBill extends Bill(testOrder, Some(loyaltyCard))
-
-        val result = TestBill.totalCost
+        val result = Bill.getTotalCost(testOrder, Some(loyaltyCard))
 
         result mustBe testPrice
       }
@@ -173,9 +147,7 @@ class BillSpec extends WordSpecLike with MustMatchers {
         val testOrder = List(Lobster, SteakSandwich, Cola)
         val testPrice = "£37.50"
 
-        object TestBill extends Bill(testOrder, Some(loyaltyCard))
-
-        val result = TestBill.totalCost
+        val result = Bill.getTotalCost(testOrder, Some(loyaltyCard))
 
         result mustBe testPrice
       }
