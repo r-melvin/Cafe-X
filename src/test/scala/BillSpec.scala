@@ -1,7 +1,8 @@
-import org.scalatest.{MustMatchers, WordSpecLike}
-import models._
+import org.scalatest.wordspec.AnyWordSpec
+import org.scalatest.matchers.must.Matchers
+import models.*
 
-class BillSpec extends WordSpecLike with MustMatchers {
+class BillSpec extends AnyWordSpec, Matchers {
 
   "calculateBill" should {
     "return a formatted price with no service charges" when {
@@ -101,21 +102,21 @@ class BillSpec extends WordSpecLike with MustMatchers {
 
     "return a discounted price" when {
       "a customer has a full loyalty card" in {
-        val loyaltyCard = LoyaltyCard(stars = 8)
+        val testLoyaltyCard = LoyaltyCard(stars = 8)
         val testOrder = List(SteakSandwich, SteakSandwich, Coffee)
         val testPrice = "£9.60"
 
-        val result = Bill.getTotalCost(testOrder, Some(loyaltyCard))
+        val result = Bill.getTotalCost(testOrder, Some(testLoyaltyCard))
 
         result mustBe testPrice
       }
 
       "a customer has 3 stars on their loyalty card" in {
-        val loyaltyCard = LoyaltyCard(stars = 3)
+        val testLoyaltyCard = LoyaltyCard(stars = 3)
         val testOrder = List(SteakSandwich, SteakSandwich, Coffee)
         val testPrice = "£11.10"
 
-        val result = Bill.getTotalCost(testOrder, Some(loyaltyCard))
+        val result = Bill.getTotalCost(testOrder, Some(testLoyaltyCard))
 
         result mustBe testPrice
       }
@@ -123,31 +124,31 @@ class BillSpec extends WordSpecLike with MustMatchers {
 
     "not return a discounted price" when {
       "a customer has no stars on their loyalty card" in {
-        val loyaltyCard = LoyaltyCard(stars = 0)
+        val testLoyaltyCard = LoyaltyCard(stars = 0)
         val testOrder = List(SteakSandwich, SteakSandwich, Coffee)
         val testPrice = "£12.00"
 
-        val result = Bill.getTotalCost(testOrder, Some(loyaltyCard))
+        val result = Bill.getTotalCost(testOrder, Some(testLoyaltyCard))
 
         result mustBe testPrice
       }
 
       "a customer has less than 3 stars on their loyalty card" in {
-        val loyaltyCard = LoyaltyCard(stars = 2)
+        val testLoyaltyCard = LoyaltyCard(stars = 2)
         val testOrder = List(SteakSandwich, SteakSandwich, Coffee)
         val testPrice = "£12.00"
 
-        val result = Bill.getTotalCost(testOrder, Some(loyaltyCard))
+        val result = Bill.getTotalCost(testOrder, Some(testLoyaltyCard))
 
         result mustBe testPrice
       }
 
       "a customer has ordered a premium item" in {
-        val loyaltyCard = LoyaltyCard(stars = 3)
+        val testLoyaltyCard = LoyaltyCard(stars = 3)
         val testOrder = List(Lobster, SteakSandwich, Cola)
         val testPrice = "£37.50"
 
-        val result = Bill.getTotalCost(testOrder, Some(loyaltyCard))
+        val result = Bill.getTotalCost(testOrder, Some(testLoyaltyCard))
 
         result mustBe testPrice
       }
