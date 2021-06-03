@@ -1,7 +1,5 @@
 package models
 
-sealed trait Temperature
+enum Temperature:
 
-case object Hot extends Temperature
-
-case object Cold extends Temperature
+  case Hot, Cold

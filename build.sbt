@@ -1,7 +1,7 @@
 name := "Cafe X"
 
-version := "0.1"
+version := "0.2"
 
-scalaVersion := "2.13.0"
+scalaVersion := "3.0.0"
 
-libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.8" % "test"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.9" % "test"
